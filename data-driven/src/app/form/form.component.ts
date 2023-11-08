@@ -18,7 +18,7 @@ export const routeAnimations = trigger('routeAnimations', [
 ])
 
 import { Component } from '@angular/core';
-import { ChildrenOutletContexts, RouterOutlet } from '@angular/router';
+import { ChildrenOutletContexts } from '@angular/router';
 import { Router } from '@angular/router';
 
 @Component({
