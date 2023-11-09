@@ -1,0 +1,101 @@
+<section>
+    <h1 class="form-title">Dados Pessoais</h1>
+    <form [formGroup]="dadosPessoaisForm">
+        <div class="form-column">
+            <div class="form-column">
+                <label class="form-label" for="">Nome</label>
+                <input class="form-input" type="text" id="nome" formControlName="nome">
+                <span class="form-error"
+                    *ngIf="dadosPessoaisForm.get('nome')?.errors?.['required'] && dadosPessoaisForm.get('nome')?.touched">
+                    Nome obrigatório
+                </span>
+                <span class="form-error"
+                    *ngIf="(!dadosPessoaisForm.get('nome')?.errors?.['vazio']) && (!dadosPessoaisForm.get('nome')?.errors?.['valido']) && dadosPessoaisForm.get('nome')?.touched">
+                    Nome Inválido
+                </span>
+            </div>
+            <div class="form-column">
+                <label class="form-label" for="">Sobrenome</label>
+                <input class="form-input" type="text" id="sobrenome" formControlName="sobrenome">
+                <span class="form-error"
+                    *ngIf="dadosPessoaisForm.get('sobrenome')?.errors?.['required'] && dadosPessoaisForm.get('sobrenome')?.touched">
+                    Sobrenome obrigatório
+                </span>
+                <span class="form-error"
+                    *ngIf="(!dadosPessoaisForm.get('sobrenome')?.errors?.['vazio']) && (!dadosPessoaisForm.get('sobrenome')?.errors?.['valido']) && dadosPessoaisForm.get('sobrenome')?.touched">
+                    Sobrenome Inválido
+                </span>
+            </div>
+        </div>
+        <div class="form-column">
+            <div class="form-column">
+                <label class="form-label" for="">Idade</label>
+                <input class="form-input" type="number" id="idade" formControlName="idade">
+                <span class="form-error"
+                    *ngIf="dadosPessoaisForm.get('idade')?.errors?.['required'] && dadosPessoaisForm.get('idade')?.touched">
+                    Idade obrigatório
+                </span>
+            </div>
+            <div class="form-column">
+                <label class="form-label" for="">Data de Nascimento</label>
+                <input class="form-input" type="date" id="dataNascimento" formControlName="dataNascimento">
+                <span class="form-error"
+                    *ngIf="dadosPessoaisForm.get('dataNascimento')?.errors?.['required'] && dadosPessoaisForm.get('dataNascimento')?.touched">
+                    Data de Nascimento obrigatório
+                </span>
+                <span class="form-error"
+                    *ngIf="(!dadosPessoaisForm.get('dataNascimento')?.errors?.['vazio']) && (!dadosPessoaisForm.get('dataNascimento')?.errors?.['valido']) && dadosPessoaisForm.get('dataNascimento')?.touched">
+                    Data de Nascimento Inválida
+                </span>
+            </div>
+        </div>
+        <div class="form-column">
+            <div class="form-column">
+                <label class="form-label" for="">Nome da Mãe</label>
+                <input class="form-input" type="text" id="nomeMae" formControlName="nomeMae">
+                <span class="form-error"
+                    *ngIf="dadosPessoaisForm.get('nomeMae')?.errors?.['required'] && dadosPessoaisForm.get('nomeMae')?.touched">
+                    Nome da Mãe obrigatório
+                </span>
+                <span class="form-error"
+                    *ngIf=" (!dadosPessoaisForm.get('nomeMae')?.errors?.['vazio']) && (!dadosPessoaisForm.get('nomeMae')?.errors?.['valido']) && dadosPessoaisForm.get('nomeMae')?.touched">
+                    Nome Inválido
+                </span>
+            </div>
+            <div class="form-column">
+                <label class="form-label" for="">Nome do Pai</label>
+                <input class="form-input" type="text" id="nomePai" formControlName="nomePai">
+                <span class="form-error"
+                    *ngIf="dadosPessoaisForm.get('nomePai')?.errors?.['required'] && dadosPessoaisForm.get('nomePai')?.touched">
+                    Nome do Pai obrigatório
+                </span>
+                <span class="form-error"
+                    *ngIf="(!dadosPessoaisForm.get('nomePai')?.errors?.['vazio']) && (!dadosPessoaisForm.get('nomePai')?.errors?.['valido']) && dadosPessoaisForm.get('nomePai')?.touched">
+                    Nome Inválido
+                </span>
+            </div>
+        </div>
+        <div class="form-column">
+            <div class="form-column">
+                <label class="form-label" for="">CPF</label>
+                <input class="form-input" type="text" id="cpf" formControlName="cpf">
+                <span class="form-error"
+                    *ngIf="dadosPessoaisForm.get('cpf')?.errors?.['required'] && dadosPessoaisForm.get('cpf')?.touched">
+                    CPF obrigatório
+                </span>
+                <span class="form-error"
+                    *ngIf="(!dadosPessoaisForm.get('cpf')?.errors?.['vazio']) && (!dadosPessoaisForm.get('cpf')?.errors?.['valido']) && dadosPessoaisForm.get('cpf')?.touched">
+                    CPF Inválido
+                </span>
+            </div>
+            <div class="form-column">
+                <label class="form-label" for="">RG</label>
+                <input class="form-input" type="text" id="rg" formControlName="rg">
+                <span class="form-error"
+                    *ngIf="dadosPessoaisForm.get('rg')?.errors?.['required'] && dadosPessoaisForm.get('rg')?.touched">
+                    RG obrigatório
+                </span>
+            </div>
+        </div>
+    </form>
+</section>
