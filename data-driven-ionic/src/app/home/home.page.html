@@ -7,12 +7,12 @@
 
   <div class="section">
 
-    <a *ngIf="paginaFomr == 1" class="number-form">1</a>
-    <a *ngIf="paginaFomr == 2" class="number-form">2</a>
-    <a *ngIf="paginaFomr == 3" class="number-form">3</a>
-    <a *ngIf="paginaFomr == 4" class="number-form">4</a>
+    <a *ngIf="paginaForm == 1" class="number-form">1</a>
+    <a *ngIf="paginaForm == 2" class="number-form">2</a>
+    <a *ngIf="paginaForm == 3" class="number-form">3</a>
+    <a *ngIf="paginaForm == 4" class="number-form">4</a>
 
-    <section *ngIf="paginaFomr == 1">
+    <section *ngIf="paginaForm == 1">
       <h1 class="form-title">Dados Pessoais</h1>
       <form [formGroup]="formulario">
         <div class="form-column">
@@ -106,7 +106,7 @@
           <div class="form-column">
             <label class="form-label" for="">RG</label>
             <input class="form-input" type="text" id="rg" formControlName="rg" [(ngModel)]="formulario.value.rg"
-              (blur)="formatarRg()">>
+              (blur)="formatarRg()">
             <span class="form-error"
               *ngIf="formulario.get('rg')?.errors?.['required'] && formulario.get('rg')?.touched">
               RG obrigatório
@@ -120,45 +120,95 @@
       </form>
     </section>
 
-    <section *ngIf="paginaFomr == 2">
+    <section *ngIf="paginaForm == 2">
       <section>
         <h1 class="form-title">Dados Cadastrais</h1>
-        <form>
+        <form [formGroup]="formulario">
           <div class="form-column">
             <div class="form-column">
               <label class="form-label" for="">Nome de Usuário</label>
-              <input class="form-input" type="text">
+              <input class="form-input" type="text" id="usuario" formControlName="usuario">
+              <span class="form-error"
+                *ngIf="formulario.get('usuario')?.errors?.['required'] && formulario.get('usuario')?.touched">
+                Nome de Usuário obrigatório
+              </span>
+              <span class="form-error"
+                *ngIf="(!formulario.get('usuario')?.errors?.['vazio']) && (formulario.get('usuario')?.errors?.['invalido']) && formulario.get('usuario')?.touched">
+                Nome Inválido
+              </span>
             </div>
             <div class="form-column">
               <label class="form-label" for="">Nome do Pai</label>
-              <input class="form-input" type="text">
+              <input class="form-input" type="text" id="nomePai" formControlName="nomePai">
+              <span class="form-error"
+                *ngIf="formulario.get('nomePai')?.errors?.['required'] && formulario.get('nomePai')?.touched">
+                Nome do Pai obrigatório
+              </span>
+              <span class="form-error"
+                *ngIf="(!formulario.get('nomePai')?.errors?.['vazio']) && (formulario.get('nomePai')?.errors?.['invalido']) && formulario.get('nomePai')?.touched">
+                Nome Inválido
+              </span>
             </div>
           </div>
           <div class="form-column">
             <div class="form-column">
               <label class="form-label" for="">Email</label>
-              <input class="form-input" type="text">
+              <input class="form-input" type="text" id="email" formControlName="email">
+              <span class="form-error"
+                *ngIf="formulario.get('email')?.errors?.['required'] && formulario.get('email')?.touched">
+                Email obrigatório
+              </span>
+              <span class="form-error"
+                *ngIf="(!formulario.get('email')?.errors?.['vazio']) && (formulario.get('email')?.errors?.['invalido']) && formulario.get('email')?.touched">
+                Email Inválido
+              </span>
             </div>
             <div class="form-column">
               <label class="form-label" for="">Senha</label>
-              <input class="form-input" type="password">
+              <input class="form-input" type="password" id="senha" formControlName="senha">
+              <span class="form-error"
+                *ngIf="formulario.get('senha')?.errors?.['required'] && formulario.get('senha')?.touched">
+                Senha obrigatório
+              </span>
+              <span class="form-error"
+                *ngIf="(!formulario.get('senha')?.errors?.['vazio']) && (formulario.get('senha')?.errors?.['invalido']) && formulario.get('senha')?.touched">
+                Senha Inválido
+              </span>
             </div>
           </div>
           <div class="form-column">
             <div class="form-column">
               <label class="form-label" for="">DDD</label>
-              <input class="form-input" type="text">
+              <input class="form-input" type="text" id="ddd" formControlName="ddd" [(ngModel)]="formulario.value.ddd"
+                (blur)="formatarDdd()">
+              <span class="form-error"
+                *ngIf="formulario.get('ddd')?.errors?.['required'] && formulario.get('ddd')?.touched">
+                DDD obrigatório
+              </span>
+              <span class="form-error"
+                *ngIf="(!formulario.get('ddd')?.errors?.['vazio']) && (formulario.get('ddd')?.errors?.['invalido']) && formulario.get('ddd')?.touched">
+                DDD Inválido
+              </span>
             </div>
             <div class="form-column">
               <label class="form-label" for="">Celular</label>
-              <input class="form-input" type="text">
+              <input class="form-input" type="text" id="celular" formControlName="celular"
+                [(ngModel)]="formulario.value.celular" (blur)="formatarCelular()">
+              <span class="form-error"
+                *ngIf="formulario.get('celular')?.errors?.['required'] && formulario.get('celular')?.touched">
+                Celular obrigatório
+              </span>
+              <span class="form-error"
+                *ngIf="(!formulario.get('celular')?.errors?.['vazio']) && (formulario.get('celular')?.errors?.['invalido']) && formulario.get('celular')?.touched">
+                Celular Inválido
+              </span>
             </div>
           </div>
         </form>
       </section>
     </section>
 
-    <section *ngIf="paginaFomr == 3">
+    <section *ngIf="paginaForm == 3">
       <h1 class="form-title">Dados do Endereço</h1>
       <form>
         <div class="form-column">
@@ -204,7 +254,7 @@
       </form>
     </section>
 
-    <section *ngIf="paginaFomr == 4">
+    <section *ngIf="paginaForm == 4">
       <h1 class="form-title">Caracteríscas</h1>
       <form>
         <div class="form-column">

@@ -9,7 +9,7 @@ import { Validadores } from 'src/utils/validadores';
 })
 export class HomePage {
 
-  paginaFomr: number = 1;
+  paginaForm: number = 1;
   paginaValida: boolean = false;
 
   formulario: FormGroup = this.formBuilder.group(
@@ -19,17 +19,22 @@ export class HomePage {
       idade: new FormControl('23', [Validators.required]),
       dataNascimento: new FormControl('2000-06-12', [Validators.required, Validadores.validarDataNascimento]),
       nomeMae: new FormControl('Andressa', [Validators.required, Validadores.validarNome]),
-      nomePai: new FormControl('Luiz', [Validators.required, Validadores.validarNome]),
       cpf: new FormControl('14463876745', [Validators.required, Validadores.validarCpf]),
       rg: new FormControl('4041783', [Validators.required, Validadores.validarRg]),
 
-      usuario: new FormControl('', [Validators.required, Validadores.validarNome]),
+      nomePai: new FormControl('Luiz', [Validators.required, Validadores.validarNome]),
+
+      usuario: new FormControl('danielrove', [Validators.required, Validadores.validarNome]),
+      email: new FormControl('daniel.rovettapassos@gmail.com', [Validators.required, Validadores.validarEmail]),
+      senha: new FormControl('1234', [Validators.required]),
+      ddd: new FormControl('28', [Validators.required]),
+      celular: new FormControl('999421495', [Validators.required]),
     }
   )
   constructor(private formBuilder: FormBuilder) { }
 
   validarPaginaFormulario() {
-    if (this.paginaFomr == 1) {
+    if (this.paginaForm == 1) {
       if (this.formulario.get('nome')?.valid &&
         this.formulario.get('sobrenome')?.valid &&
         this.formulario.get('idade')?.valid &&
@@ -38,6 +43,16 @@ export class HomePage {
         this.formulario.get('nomePai')?.valid &&
         this.formulario.get('cpf')?.valid &&
         this.formulario.get('rg')?.valid) {
+        return true
+      }
+    }
+    if (this.paginaForm == 2) {
+      if (this.formulario.get('usuario')?.valid &&
+        this.formulario.get('email')?.valid &&
+        this.formulario.get('senha')?.valid &&
+        this.formulario.get('ddd')?.valid &&
+        this.formulario.get('celular')?.valid &&
+        this.formulario.get('nomePai')?.valid) {
         return true
       }
     }
@@ -61,11 +76,25 @@ export class HomePage {
     this.formulario.value.rg = rg
   }
 
-  proximaPagina() {
-    this.paginaFomr++;
+  formatarDdd() {
+    let ddd = this.formulario.value.ddd as string;
+    ddd = ddd.replace(/\D/g, "")
+    ddd = "(" + ddd + ")"
+    this.formulario.value.ddd = ddd
+  }
 
-    if (this.paginaFomr > 4) {
-      this.paginaFomr = 1;
+  formatarCelular() {
+    let celular = this.formulario.value.celular as string;
+    celular = celular.replace(/\D/g, "")
+    celular = celular.replace(/(\d{5})(\d)/, "$1-$2")
+    this.formulario.value.celular = celular
+  }
+
+  proximaPagina() {
+    this.paginaForm++;
+
+    if (this.paginaForm > 4) {
+      this.paginaForm = 1;
     }
   }
 
