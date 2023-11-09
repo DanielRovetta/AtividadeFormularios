@@ -18,9 +18,9 @@ export class Validadores {
             (dominio.search(".") != -1) &&
             (dominio.indexOf(".") >= 1) &&
             (dominio.lastIndexOf(".") < dominio.length - 1)) {
-            return { valido: true };
+            return null;
         }
-        return { valido: false };
+        return { invalido: true };
     }
 
     static validarNome(control: AbstractControl) {
@@ -30,9 +30,22 @@ export class Validadores {
         }
 
         if (nome.length >= 3) {
-            return { valido: true };
+            return null
         }
-        return { valido: false };
+        return { invalido: true };
+    }
+
+
+    static validarRg(control: AbstractControl) {
+        const rg = control.value.replaceAll('.', '').replaceAll('-', '');
+        if (rg.length == 0) {
+            return { vazio: true };
+        }
+
+        if (rg.length < 7 || rg.length > 7) {
+            return { invalido: true };
+        }
+        return null
     }
 
     static validarDataNascimento(control: AbstractControl) {
@@ -41,13 +54,13 @@ export class Validadores {
         }
         const data = new Date(control.value as string);
         if (data.getTime() < new Date().getTime()) {
-            return { valido: true };
+            return null;
         }
-        return { valido: false };
+        return { invalido: true };
     }
 
     static validarCpf(control: AbstractControl) {
-        const cpf = control.value as string;
+        const cpf = control.value.replaceAll('.', '').replaceAll('-', '');
         if (cpf.length == 0) {
             return { vazio: true };
         }
@@ -56,8 +69,8 @@ export class Validadores {
 
         equalDigits = 1;
 
-        if (cpf.length < 11) {
-            return { valido: false };
+        if (cpf.length < 11 || cpf.length > 11) {
+            return { invalido: true };
         }
 
         numbers = cpf.substring(0, 9);
@@ -71,7 +84,7 @@ export class Validadores {
         result = sum % 11 < 2 ? 0 : 11 - (sum % 11);
 
         if (result !== Number(digits.charAt(0))) {
-            return { valido: false };
+            return { invalido: true };
         }
 
         numbers = cpf.substring(0, 10);
@@ -84,10 +97,10 @@ export class Validadores {
         result = sum % 11 < 2 ? 0 : 11 - (sum % 11);
 
         if (result !== Number(digits.charAt(1))) {
-            return { valido: false };
+            return { invalido: true };
         }
 
-        return { valido: true };
+        return null;
     }
 
 }

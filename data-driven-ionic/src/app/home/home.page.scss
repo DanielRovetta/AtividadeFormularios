@@ -40,6 +40,22 @@
   color: #ffffff;
 }
 
+.nosend {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  background-color: #848484;
+  width: 70px;
+  height: 70px;
+  border-radius: 35px;
+  font-size: 40px;
+  font-weight: 900;
+  margin: 30px 0px 20px 0px;
+  color: #ffffff;
+}
+
 section {
   display: flex;
   flex-direction: column;
@@ -62,6 +78,7 @@ section {
 
 .form-input {
   background-color: #D0BFFF;
+  color: #787485;
   height: 40px;
   width: 250px;
   border-radius: 20px;
