@@ -6,7 +6,6 @@ import { HomePage } from './home.page';
 
 
 import { HomePageRoutingModule } from './home-routing.module';
-import { FormDadosPessoaisComponent } from './form-dados-pessoais/form-dados-pessoais.component';
 
 
 @NgModule({
@@ -19,7 +18,7 @@ import { FormDadosPessoaisComponent } from './form-dados-pessoais/form-dados-pes
   ],
   declarations: [
     HomePage,
-    FormDadosPessoaisComponent
+
   ]
 })
 export class HomePageModule { }
