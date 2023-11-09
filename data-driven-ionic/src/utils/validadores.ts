@@ -48,6 +48,18 @@ export class Validadores {
         return null
     }
 
+    static validarCep(control: AbstractControl) {
+        const rg = control.value.replaceAll('.', '').replaceAll('-', '');
+        if (rg.length == 0) {
+            return { vazio: true };
+        }
+
+        if (rg.length < 8 || rg.length > 8) {
+            return { invalido: true };
+        }
+        return null
+    }
+
     static validarDataNascimento(control: AbstractControl) {
         if ((control.value as string).length == 0) {
             return { vazio: true };

@@ -29,6 +29,15 @@ export class HomePage {
       senha: new FormControl('1234', [Validators.required]),
       ddd: new FormControl('28', [Validators.required]),
       celular: new FormControl('999421495', [Validators.required]),
+
+      rua: new FormControl('Padre Anchieta', [Validators.required, Validadores.validarNome]),
+      bairro: new FormControl('Centro', [Validators.required, Validadores.validarNome]),
+      numero: new FormControl('109', [Validators.required]),
+      cidade: new FormControl('Alegre', [Validators.required, Validadores.validarNome]),
+      logradouro: new FormControl(''),
+      estado: new FormControl('ES', [Validators.required]),
+      cep: new FormControl('29500000', [Validators.required, Validadores.validarCep]),
+      pontoReferencia: new FormControl(''),
     }
   )
   constructor(private formBuilder: FormBuilder) { }
@@ -56,6 +65,18 @@ export class HomePage {
         return true
       }
     }
+    if (this.paginaForm == 3) {
+      if (this.formulario.get('rua')?.valid &&
+        this.formulario.get('bairro')?.valid &&
+        this.formulario.get('numero')?.valid &&
+        this.formulario.get('cidade')?.valid &&
+        this.formulario.get('logradouro')?.valid &&
+        this.formulario.get('estado')?.valid &&
+        this.formulario.get('cep')?.valid &&
+        this.formulario.get('pontoReferencia')?.valid) {
+        return true
+      }
+    }
     return false
   }
 
@@ -74,6 +95,13 @@ export class HomePage {
     rg = rg.replace(/(\d{1})(\d)/, "$1.$2")
     rg = rg.replace(/(\d{3})(\d)/, "$1.$2")
     this.formulario.value.rg = rg
+  }
+
+  formatarCep() {
+    let cep = this.formulario.value.cep as string;
+    cep = cep.replace(/\D/g, "")
+    cep = cep.replace(/(\d{5})(\d)/, "$1-$2")
+    this.formulario.value.cep = cep
   }
 
   formatarDdd() {
