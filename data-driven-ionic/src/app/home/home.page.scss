@@ -36,7 +36,7 @@
   border-radius: 35px;
   font-size: 40px;
   font-weight: 900;
-  margin: 30px 0px 20px 0px;
+  margin: 30px 10px 20px 10px;
   color: #ffffff;
 }
 
@@ -52,7 +52,7 @@
   border-radius: 35px;
   font-size: 40px;
   font-weight: 900;
-  margin: 30px 0px 20px 0px;
+  margin: 30px 10px 20px 10px;
   color: #ffffff;
 }
 
@@ -76,6 +76,10 @@ section {
   margin: 10px 0px;
 }
 
+.form-text {
+  color: #787485;
+}
+
 .form-input {
   background-color: #D0BFFF;
   color: #787485;
@@ -95,6 +99,7 @@ section {
 
 .form-title {
   font-size: 30px;
+  text-align: center;
   color: #787485;
   margin: 30px 0px 0px 0px;
 }

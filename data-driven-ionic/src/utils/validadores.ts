@@ -3,6 +3,9 @@ import { AbstractControl } from "@angular/forms";
 export class Validadores {
 
     static validarEmail(control: AbstractControl) {
+        if (control.value == null) {
+            return { vazio: true };
+        }
         const email = control.value as string;
         if (email.length == 0) {
             return { vazio: true };
@@ -24,6 +27,9 @@ export class Validadores {
     }
 
     static validarNome(control: AbstractControl) {
+        if (control.value == null) {
+            return { vazio: true };
+        }
         const nome = control.value as string;
         if (nome.length == 0) {
             return { vazio: true };
@@ -37,6 +43,9 @@ export class Validadores {
 
 
     static validarRg(control: AbstractControl) {
+        if (control.value == null) {
+            return { vazio: true };
+        }
         const rg = control.value.replaceAll('.', '').replaceAll('-', '');
         if (rg.length == 0) {
             return { vazio: true };
@@ -49,18 +58,24 @@ export class Validadores {
     }
 
     static validarCep(control: AbstractControl) {
-        const rg = control.value.replaceAll('.', '').replaceAll('-', '');
-        if (rg.length == 0) {
+        if (control.value == null) {
+            return { vazio: true };
+        }
+        const cep = control.value.replaceAll('.', '').replaceAll('-', '');
+        if (cep.length == 0) {
             return { vazio: true };
         }
 
-        if (rg.length < 8 || rg.length > 8) {
+        if (cep.length < 8 || cep.length > 8) {
             return { invalido: true };
         }
         return null
     }
 
     static validarDataNascimento(control: AbstractControl) {
+        if (control.value == null) {
+            return { vazio: true };
+        }
         if ((control.value as string).length == 0) {
             return { vazio: true };
         }
@@ -72,7 +87,12 @@ export class Validadores {
     }
 
     static validarCpf(control: AbstractControl) {
+        if (control.value == null) {
+            return { vazio: true };
+        }
+
         const cpf = control.value.replaceAll('.', '').replaceAll('-', '');
+
         if (cpf.length == 0) {
             return { vazio: true };
         }

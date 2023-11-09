@@ -321,41 +321,99 @@
 
     <section *ngIf="paginaForm == 4">
       <h1 class="form-title">Caracteríscas</h1>
-      <form>
+      <form [formGroup]="formulario">
         <div class="form-column">
           <div class="form-column">
             <label class="form-label" for="">Altura</label>
-            <input class="form-input" type="number">
+            <input class="form-input" type="number" id="altura" formControlName="altura">
+            <span class="form-error"
+              *ngIf="formulario.get('altura')?.errors?.['required'] && formulario.get('altura')?.touched">
+              Altura obrigatória
+            </span>
+            <span class="form-error"
+              *ngIf="(!formulario.get('altura')?.errors?.['vazio']) && (formulario.get('altura')?.errors?.['invalido']) && formulario.get('altura')?.touched">
+              Altura Inválida
+            </span>
           </div>
           <div class="form-column">
             <label class="form-label" for="">Peso</label>
-            <input class="form-input" type="number">
+            <input class="form-input" type="number" id="peso" formControlName="peso">
+            <span class="form-error"
+              *ngIf="formulario.get('peso')?.errors?.['required'] && formulario.get('peso')?.touched">
+              Peso obrigatório
+            </span>
+            <span class="form-error"
+              *ngIf="(!formulario.get('peso')?.errors?.['vazio']) && (formulario.get('peso')?.errors?.['invalido']) && formulario.get('peso')?.touched">
+              Peso Inválido
+            </span>
           </div>
         </div>
         <div class="form-column">
           <div class="form-column">
             <label class="form-label" for="">Tipo Sanguíeno</label>
-            <input class="form-input" type="number">
+            <input class="form-input" type="text" id="tipoSanguineo" formControlName="tipoSanguineo">
+            <span class="form-error"
+              *ngIf="formulario.get('tipoSanguineo')?.errors?.['required'] && formulario.get('tipoSanguineo')?.touched">
+              Tipo Sanguíeno obrigatório
+            </span>
+            <span class="form-error"
+              *ngIf="(!formulario.get('tipoSanguineo')?.errors?.['vazio']) && (formulario.get('tipoSanguineo')?.errors?.['invalido']) && formulario.get('tipoSanguineo')?.touched">
+              Tipo Sanguíeno Inválido
+            </span>
           </div>
           <div class="form-column">
             <label class="form-label" for="">Cor Preferida</label>
-            <input class="form-input" type="text">
+            <input class="form-input" type="text" id="cor" formControlName="cor">
+            <span class="form-error"
+              *ngIf="formulario.get('cor')?.errors?.['required'] && formulario.get('cor')?.touched">
+              Cor obrigatória
+            </span>
+            <span class="form-error"
+              *ngIf="(!formulario.get('cor')?.errors?.['vazio']) && (formulario.get('cor')?.errors?.['invalido']) && formulario.get('cor')?.touched">
+              Cor Inválida
+            </span>
           </div>
         </div>
         <div class="form-column">
           <div class="form-column">
             <label class="form-label" for="">Signo</label>
-            <input class="form-input" type="text">
+            <input class="form-input" type="text" id="signo" formControlName="signo">
+            <span class="form-error"
+              *ngIf="formulario.get('signo')?.errors?.['required'] && formulario.get('signo')?.touched">
+              Signo obrigatório
+            </span>
+            <span class="form-error"
+              *ngIf="(!formulario.get('signo')?.errors?.['vazio']) && (formulario.get('signo')?.errors?.['invalido']) && formulario.get('signo')?.touched">
+              Signo Inválido
+            </span>
           </div>
           <div class="form-column">
             <label class="form-label" for="">Animal Preferido</label>
-            <input class="form-input" type="text">
+            <input class="form-input" type="text" id="animal" formControlName="animal">
+            <span class="form-error"
+              *ngIf="formulario.get('animal')?.errors?.['required'] && formulario.get('animal')?.touched">
+              Animal obrigatório
+            </span>
+            <span class="form-error"
+              *ngIf="(!formulario.get('animal')?.errors?.['vazio']) && (formulario.get('animal')?.errors?.['invalido']) && formulario.get('animal')?.touched">
+              Animal Inválido
+            </span>
           </div>
         </div>
       </form>
     </section>
-    <button (click)="proximaPagina()"
-      [ngClass]="{'send': validarPaginaFormulario(), 'nosend': !validarPaginaFormulario() }"
-      [disabled]="!validarPaginaFormulario()">➞</button>
+    <section *ngIf="paginaForm == 5">
+      <h1 class="form-title">Agradecemos Por Sua Inscrição!</h1>
+      <p class="form-text">Sua Inscrição foi enviada com sucesso!</p>
+    </section>
+    <div class="form-row">
+      <button *ngIf="paginaForm != 5 && paginaForm != 1" class="send" (click)="voltarPagina()">🠔</button>
+
+      <button *ngIf="paginaForm != 5" (click)="proximaPagina()"
+        [ngClass]="{'send': validarPaginaFormulario(), 'nosend': !validarPaginaFormulario() }"
+        [disabled]="!validarPaginaFormulario()">🠖</button>
+
+      <button *ngIf="paginaForm == 5" class="send" (click)="resetForm()">✔</button>
+    </div>
   </div>
 </ion-content>

@@ -14,30 +14,37 @@ export class HomePage {
 
   formulario: FormGroup = this.formBuilder.group(
     {
-      nome: new FormControl('Daniel', [Validators.required, Validadores.validarNome]),
-      sobrenome: new FormControl('Rovetta', [Validators.required, Validadores.validarNome]),
-      idade: new FormControl('23', [Validators.required]),
-      dataNascimento: new FormControl('2000-06-12', [Validators.required, Validadores.validarDataNascimento]),
-      nomeMae: new FormControl('Andressa', [Validators.required, Validadores.validarNome]),
-      cpf: new FormControl('14463876745', [Validators.required, Validadores.validarCpf]),
-      rg: new FormControl('4041783', [Validators.required, Validadores.validarRg]),
+      nome: new FormControl('', [Validators.required, Validadores.validarNome]),
+      sobrenome: new FormControl('', [Validators.required, Validadores.validarNome]),
+      idade: new FormControl('', [Validators.required]),
+      dataNascimento: new FormControl('', [Validators.required, Validadores.validarDataNascimento]),
+      nomeMae: new FormControl('', [Validators.required, Validadores.validarNome]),
+      cpf: new FormControl('', [Validators.required, Validadores.validarCpf]),
+      rg: new FormControl('', [Validators.required, Validadores.validarRg]),
 
-      nomePai: new FormControl('Luiz', [Validators.required, Validadores.validarNome]),
+      nomePai: new FormControl('', [Validators.required, Validadores.validarNome]),
 
-      usuario: new FormControl('danielrove', [Validators.required, Validadores.validarNome]),
-      email: new FormControl('daniel.rovettapassos@gmail.com', [Validators.required, Validadores.validarEmail]),
-      senha: new FormControl('1234', [Validators.required]),
-      ddd: new FormControl('28', [Validators.required]),
-      celular: new FormControl('999421495', [Validators.required]),
+      usuario: new FormControl('', [Validators.required, Validadores.validarNome]),
+      email: new FormControl('', [Validators.required, Validadores.validarEmail]),
+      senha: new FormControl('', [Validators.required]),
+      ddd: new FormControl('', [Validators.required]),
+      celular: new FormControl('', [Validators.required]),
 
-      rua: new FormControl('Padre Anchieta', [Validators.required, Validadores.validarNome]),
-      bairro: new FormControl('Centro', [Validators.required, Validadores.validarNome]),
-      numero: new FormControl('109', [Validators.required]),
-      cidade: new FormControl('Alegre', [Validators.required, Validadores.validarNome]),
+      rua: new FormControl('', [Validators.required, Validadores.validarNome]),
+      bairro: new FormControl('', [Validators.required, Validadores.validarNome]),
+      numero: new FormControl('', [Validators.required]),
+      cidade: new FormControl('', [Validators.required, Validadores.validarNome]),
       logradouro: new FormControl(''),
-      estado: new FormControl('ES', [Validators.required]),
-      cep: new FormControl('29500000', [Validators.required, Validadores.validarCep]),
+      estado: new FormControl('', [Validators.required]),
+      cep: new FormControl('', [Validators.required, Validadores.validarCep]),
       pontoReferencia: new FormControl(''),
+
+      altura: new FormControl('', [Validators.required]),
+      peso: new FormControl('', [Validators.required]),
+      tipoSanguineo: new FormControl('', [Validators.required]),
+      cor: new FormControl('', [Validators.required]),
+      signo: new FormControl('', [Validators.required, Validadores.validarNome]),
+      animal: new FormControl('', [Validators.required]),
     }
   )
   constructor(private formBuilder: FormBuilder) { }
@@ -74,6 +81,16 @@ export class HomePage {
         this.formulario.get('estado')?.valid &&
         this.formulario.get('cep')?.valid &&
         this.formulario.get('pontoReferencia')?.valid) {
+        return true
+      }
+    }
+    if (this.paginaForm == 4) {
+      if (this.formulario.get('altura')?.valid &&
+        this.formulario.get('peso')?.valid &&
+        this.formulario.get('tipoSanguineo')?.valid &&
+        this.formulario.get('cor')?.valid &&
+        this.formulario.get('signo')?.valid &&
+        this.formulario.get('animal')?.valid) {
         return true
       }
     }
@@ -119,11 +136,20 @@ export class HomePage {
   }
 
   proximaPagina() {
-    this.paginaForm++;
-
-    if (this.paginaForm > 4) {
-      this.paginaForm = 1;
+    if (this.paginaForm < 5) {
+      this.paginaForm++;
     }
+  }
+
+  voltarPagina() {
+    if (this.paginaForm > 1) {
+      this.paginaForm--;
+    }
+  }
+
+  resetForm() {
+    this.formulario.reset(true);
+    this.paginaForm = 1;
   }
 
 }
